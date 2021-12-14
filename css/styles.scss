@@ -1,0 +1,664 @@
+// Colors
+$black: #030303;
+$white: #fff;
+$yellow: #EFC25D;
+$yellow-dark: #C69648;
+$navy: #151F2A;
+$title-color: #2B2835;
+$grey: #7b7b7b;
+$grey-light: #F6F6F8;
+$btn-color: #6A6A6A;
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Open+Sans:wght@400;600;700&display=swap');//     font-family: 'GT Pressura Mono';
+//     font-style: normal;
+//     font-weight: normal;
+// 	src: url("../fonts/GTPressuraMono.eot"); /* IE9*/
+// 	src: url("../fonts/GTPressuraMono.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+// 	url("../fonts/GTPressuraMono.woff2") format("woff2"), /* chrome、firefox */
+// 	url("../fonts/GTPressuraMono.woff") format("woff"), /* chrome、firefox */
+// 	url("../fonts/GTPressuraMono.ttf") format("truetype"); /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+// }
+
+@mixin fontprimary {
+font-family: 'Open Sans', sans-serif;
+}
+
+@mixin fontsecondary {
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+$font-weight-regular: 400;
+$font-weight-med: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+
+// Media Breakpoints
+$screen-xs: 480px; //mobile
+$screen-sm: 768px; //ipad
+$screen-md: 991px; //sm desktop
+$screen-lg: 1200px; //lg desktop
+$screen-xl: 1660px; //xl desktop
+
+@mixin xs {
+	@media screen and (max-width: $screen-xs) {
+		@content;
+	}
+}
+
+@mixin sm {
+	@media screen and (max-width: $screen-sm) {
+		@content;
+	}
+}
+
+// Medium devices
+@mixin md {
+	@media screen and (max-width: $screen-md) {
+		@content;
+	}
+}
+
+// Large devices
+@mixin lg {
+	@media screen and (max-width: $screen-lg) {
+		@content;
+	}
+}
+
+// Extra large devices
+@mixin xl {
+	@media screen and (max-width: $screen-xl) {
+		@content;
+	}
+}
+
+@mixin absolute-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+$site-max-width: 2000px;
+
+body {
+	@include fontprimary;
+    min-height: 100vh;
+	min-height: -webkit-fill-available;
+    margin: 0;
+    color: $navy;
+    background: $white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.subtitle {
+    font-weight: $font-weight-regular;
+    color: $navy;
+
+    @include sm {
+        display: block;
+        margin: auto;
+        text-align: center;
+    }
+}
+
+h1.title-main {
+    font-weight: $font-weight-bold;
+    font-size: 2.875em;
+    text-transform: uppercase;
+    margin: 0 0 28px;
+
+    @include sm {
+        text-align: center;
+        margin: 0;
+    }
+}
+
+h2.title-secondary {
+    font-weight: $font-weight-semibold;
+    font-size: 2.5em;
+    margin: 0 0 22px;
+
+    @include sm {
+        font-size: 1.5em;
+    }
+}
+
+h3.title-tertiary {
+    font-weight: $font-weight-semibold;
+    font-size: 1.5em;
+    margin: 0 0 8px;
+}
+
+.section-copy {
+    font-weight: $font-weight-regular;
+    font-size: 0.875em;
+    line-height: 1.6875em;
+    margin: 0 0 38px;
+
+    @include sm {
+        margin: 0 0 15px;
+    }
+}
+
+.btn-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    .btn {
+        font-size: 0.875em;
+        min-width: 108px;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        color: $btn-color;
+        border: 1px solid $btn-color;
+        border-radius: 100px;
+        opacity: 1;
+        transition: all .3s ease-in-out;
+
+        @include sm {
+            width: 80%;
+            max-width: none;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+
+        &:after {
+            content: "\f061";
+            font-family: "Font Awesome 5 Free"; 
+            font-weight: 900; 
+            margin-left: 10px;
+            padding-top: 2px;
+        }
+
+        &:hover {
+            background: $navy;
+            color: $white;
+        }
+
+        &.btn-highlight {
+            background: $yellow;
+            border-color: $yellow;
+            color: $navy;
+
+            &:hover {
+                background: transparent;
+            }
+        }
+    }
+}
+
+.site-header {
+    &__top {
+        height: 30px;
+        width: 100%;
+        background: $grey-light;
+
+        @include sm {
+            display: none;
+        }
+
+        &--content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            height: 100%;
+            max-width: calc(#{$site-max-width} - 5%);
+            margin: auto;
+            padding: 0 5%;
+        }
+
+        .social-nav {
+            display: flex;
+           
+
+            .social-link {
+                background-color: $grey;
+                border-radius: 50%;
+                height: 15px;
+                width: 15px;
+                margin-right: 5px;
+                @include flex-center;
+                
+                &:last-of-type {
+                    margin-right: 0;
+                }
+                
+                i {
+                    color: $white;
+                    font-size: .6em;
+                    padding: 0.1em 0 0 0.1em;
+                    transition: all .3s ease-in-out;
+                }
+
+                &:hover {
+                    i {
+                        color: $yellow;
+                    }
+                }
+            }
+        }
+        .account-cart-container {
+            font-size: .75em;
+
+            .login-btn {
+                margin-right: 20px;
+
+                .account-icon {
+                    width: 15px;
+                    height: 15px;
+                    margin-left: 5px;
+                }
+            }
+
+            .cart-btn {
+                .cart-icon {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+
+    &__main {
+        height: 70px;
+        background: $navy;
+        color: $white;
+
+        @include sm {
+            display: none;
+        }
+
+        &--content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            height: 100%;
+            max-width: calc(#{$site-max-width} - 5%);
+            margin: auto;
+            padding: 0 5%;
+        }
+
+        .site-nav {
+            .site-link {
+                color: $white;
+                font-size: 0.875em;
+                font-weight: $font-weight-semibold;
+                text-transform: capitalize;
+            }
+
+            .search-label {
+                position: relative;
+                
+                &:after {
+                    content: "";
+                    width: 20px;
+                    height: 20px;
+                    position: absolute;
+                    right: 20px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: url(../img/search.svg);
+                }
+            }
+
+            .search-bar {
+                margin-left: 21px;
+                background: transparent;
+                color: $white;
+                border: 1px solid $white;
+                padding: 10px 20px;
+                font-size: 0.875em;
+                font-weight: $font-weight-regular;
+                border-radius: 100px;
+                position: relative;
+
+                &::placeholder {
+                    color: $white;
+                    opacity: 1;
+                  }
+                  
+                &::-ms-input-placeholder {
+                    color: $white;
+                }
+                
+                &::-ms-input-placeholder {
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    &__mob {
+        display: none;
+        @include sm {
+            @include flex-center;
+            background: $navy;
+            color: $white;
+            height: 70px;
+        }
+        
+        .site-logo {
+            flex: 0 0 50%;
+            height: 30px;
+
+            &__img {
+                display: block;
+                height: 100%;
+                margin: auto;
+            }
+        }
+
+        #hamburger,
+        .search,
+        .login-btn,
+        .cart-btn {
+            flex: 0 0 12%;
+            @include flex-center;
+        }
+        
+    }
+}
+
+.page-content {
+    width: 100vw;
+    max-width: $site-max-width;
+    margin: auto;
+}
+
+.hero-container {
+    height: calc(90vh - 100px);
+    max-height: 856px;
+    background-size: cover;
+    background-position: 50% center;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+
+    @include md {
+        height: auto;
+        max-height: none;
+    }
+
+    .hero-image {
+        @include absolute-center;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        &--mobile {
+            display: none;
+        }
+
+        @include md {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            flex: 0 0 100%;
+
+            &--desktop {
+                display: none;
+            }
+
+            &--mobile {
+                display: block;
+            }
+        }
+    }
+
+    .hero-copy-container {
+        position: absolute;
+        top: 50%;
+        width: 50%;
+        right: 0;
+        transform: translateY(-50%);
+
+        @include md {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            flex: 0 0 100%;
+        }
+
+        .section-copy__hero {
+            color: $yellow;
+
+            @include sm {
+                text-align: center;
+            }
+        }
+
+        .btn {
+            min-width: 148px;
+
+            &:first-of-type {
+                margin-right: 14px;
+
+                @include sm {
+                    margin-right: auto;
+                }
+            }
+        }
+    }
+}
+
+.logo-grid {
+    @include flex-center;
+    flex-wrap: wrap;
+    width: 90%;
+    max-width: 880px;
+    margin: 75px auto;
+
+    @include sm {
+        margin: 45px auto;
+    }
+
+    .logo-item {
+        display: block;
+        width: 15%;
+        margin: 0 2.4%;
+
+        @include md {
+            width: 25%;
+        }
+
+        @include sm {
+            width: 45%;
+            margin: 0 2.5% 30px;
+        }
+    }
+}
+
+.image-copy-grid {
+    width: 90%;
+    margin: auto auto 200px;
+
+    @include sm {
+        margin-bottom: 100px;
+    }
+    
+    &__row {
+        display: flex;
+        flex-wrap: wrap;
+
+        @include sm {
+            flex-direction: row-reverse;
+        }
+
+        &:nth-of-type(2n) {
+            flex-direction: row-reverse;
+        }
+
+        .image-container {
+            flex: 0 0 50%;
+
+            @include sm {
+                flex: 0 0 100%;
+            }
+
+            .row-img {
+                display: block;
+                width: 100%;
+            }
+        }
+
+        .copy-container {
+            flex: 0 0 50%;
+
+            @include sm {
+                flex: 0 0 100%;
+            }
+
+            .section-copy {
+                color: $black;
+            }
+
+            .subtitle,
+            h2.title-secondary {
+                @include sm {
+                    text-align: center;
+                    margin: auto;
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+.featured-image-container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .featured-image-block {
+        flex: 0 0 45%;
+
+        @include sm {
+            flex: 0 0 100%;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            height: 0;
+            padding-bottom: 125%;
+            position: relative;
+            background: $navy;
+
+            .featured-img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 1;
+                transform: scale(1);
+                transform-origin: center;
+                transition: all .5s ease-in-out;
+
+                @include sm {
+                    opacity: .7;
+                }
+                
+            }
+        }
+        
+        .featured-copy-cta-container {
+            @include absolute-center;
+            text-align: center;
+            color: $white;
+            opacity: 0;
+            top: 30%;
+            transition: all .3s ease-in-out;
+
+            @include sm {
+                top: 50%;
+                opacity: 1;
+                width: 90%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                border-color: $white;
+                color: $white;
+            }
+        }
+
+        &:hover {
+            .featured-img {
+                opacity: .7;
+                transform: scale(1.1);
+
+                @include sm {
+                    transform: scale(1);
+                }
+            }
+
+            .featured-copy-cta-cointainer {
+                top: 50%;
+                opacity: 1;
+            }
+        }
+
+        .subtitle {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        h2.title-secondary { 
+            text-align: center;
+        }
+
+        .subtitle,
+        .title-secondary {
+            @include sm {
+                display: none;
+            }            
+        }
+
+        .featured-copy-cta-container {
+            .subtitle,
+             .title-secondary {
+                display: none;
+            
+                @include sm {
+                    display: block;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+.fw-cta-container {
+    height: 245px;
+    background: $grey-light;
+    @include flex-center;
+    flex-direction: column;
+
+    .featured-copy {
+        margin: 0 0 36px;
+    }
+}
